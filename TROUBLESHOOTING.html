@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Troubleshooting VLAN - Jaringan Komputer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #eef2f7;
+            color: #1a2c3e;
+            line-height: 1.55;
+            padding: 30px 20px;
+        }
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 28px;
+            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.15);
+            overflow: hidden;
+            padding: 45px 50px;
+        }
+        h1 {
+            font-size: 2.2rem;
+            border-left: 6px solid #0077b6;
+            padding-left: 22px;
+            margin-bottom: 25px;
+            color: #023e5f;
+        }
+        h2 {
+            font-size: 1.8rem;
+            margin: 35px 0 18px 0;
+            padding-bottom: 6px;
+            border-bottom: 2px solid #cbd5e1;
+            color: #0f4c5f;
+        }
+        h3 {
+            font-size: 1.4rem;
+            margin: 28px 0 12px 0;
+            color: #1e6f5c;
+        }
+        h4 {
+            font-size: 1.2rem;
+            margin: 22px 0 10px 0;
+            color: #2c6e9e;
+            font-weight: 600;
+        }
+        p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+        ul, ol {
+            margin: 0.75rem 0 1rem 1.8rem;
+        }
+        li {
+            margin: 0.45rem 0;
+            text-align: justify;
+        }
+        code {
+            background: #f1f5f9;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            color: #b91c1c;
+            border: 1px solid #e2e8f0;
+        }
+        pre {
+            background: #0f172a;
+            color: #e2e8f0;
+            padding: 16px 20px;
+            border-radius: 20px;
+            overflow-x: auto;
+            margin: 20px 0;
+            font-family: 'Courier New', 'Fira Code', monospace;
+            font-size: 0.9rem;
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
+        .note {
+            background: #eef4fc;
+            border-left: 5px solid #2c7da0;
+            padding: 14px 20px;
+            margin: 20px 0;
+            border-radius: 16px;
+        }
+        hr {
+            margin: 35px 0;
+            border: 0;
+            height: 1px;
+            background: linear-gradient(90deg, #bfd9f0, transparent);
+        }
+        @media (max-width: 700px) {
+            .container {
+                padding: 24px 20px;
+            }
+            h1 {
+                font-size: 1.7rem;
+            }
+            h2 {
+                font-size: 1.5rem;
+            }
+            h3 {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Troubleshooting VLAN</h1>
+
+    <h2>1. Troubleshooting VLAN</h2>
+    <p>Troubleshooting pada VLAN merupakan cara untuk memecahkan permasalahan atau menentukan solusi pada masalah yang terjadi pada sebuah jaringan dalam hal ini mengenai VLAN. Pemecahan masalah tersebut terdiri dari beberapa tahapan yang harus dilakukan untuk mencapai hasil yang maksimal.</p>
+
+    <h2>2. Peralatan yang Diperlukan pada Saat Troubleshooting Jaringan</h2>
+    <p>Setelah mengetahui ada kerusakan pada jaringan, kemudian bersiap untuk memperbaikinya. Pastikan juga untuk menyiapkan beberapa peralatan untuk membantu proses perbaikan tersebut, berikut beberapa peralatan yang bisa disiapkan:</p>
+    <ul>
+        <li><strong>LAN tester</strong> – sebuah alat yang biasa digunakan untuk mengecek kabel jaringan ketika terjadi troubleshooting jaringan. LAN tester dapat membantu beberapa kerusakan yang terjadi, seperti kesalahan ketika pemasangan kabel ketika di-crimping. Kemudian bisa juga mengecek rusak atau putusnya suatu kabel yang tidak dapat terlihat. Bisa juga mengecek jenis apakah kabel tersebut <em>cross</em> atau <em>straight</em>.</li>
+        <li><strong>Tool kit</strong> – sangat membantu troubleshooting jaringan. Berfungsi membuka tempat atau wadah <em>port device</em> yang tertutup, agar dapat memasangkannya lagi.</li>
+        <li><strong>Tang Crimping</strong> – alat yang juga dapat membantu pengecekan ketika troubleshooting jaringan. Alat ini dapat membuka kabel yang dipakai untuk transfer data. Tang crimping ini dapat digunakan untuk memotong kulit kabel dan juga menyatukan kabel.</li>
+        <li><strong>Konektor RJ-45</strong> – dengan bantuan tang crimping alat ini dapat membantu menghubungkan kabel dan juga media transmisi dengan port perangkat jaringan.</li>
+    </ul>
+
+    <h2>3. Prosedur dan Teknik Pemeriksaan Permasalahan pada VLAN</h2>
+    <p>Ada beberapa hal yang harus diperhatikan pada saat akan melakukan analisis terhadap permasalahan yang terjadi pada VLAN.</p>
+    <ul>
+        <li>Mulailah dengan melakukan pengecekan terhadap layer fisik, seperti melakukan pengecekan terhadap kabel jaringan yang dipasang, interface <em>switch</em> atau port yang digunakan dan yakinkan kondisi interface tersebut dalam keadaan <em>up/up</em>.</li>
+        <li>Mulai cek konfigurasi yang dibuat pada port dan switch.</li>
+        <li>Pastikan MAC Address perangkat sudah ada pada tabel ARP. Ketik <strong>show arp</strong> untuk mengetahui perangkat tersebut sudah masuk dalam daftar alamat MAC.</li>
+    </ul>
+
+    <h2>4. Mendeteksi Permasalahan VLAN dan Memperbaiki Permasalahan VLAN</h2>
+    <p>Berikut ini beberapa permasalahan yang terjadi pada switch dan VLAN beserta solusinya.</p>
+
+    <h3>a. Permasalahan Umum yang Terjadi pada Switch</h3>
+    <p>Masalah konektivitas merupakan hal yang biasa terjadi pada switch. Berikut beberapa gejala yang terjadi pada <em>switch</em>:</p>
+    <ul>
+        <li><em>Interface</em> pada switch menunjukkan status <strong>FastEthernet down</strong> dan <strong>line protocol down</strong> – menunjukkan bahwa perangkat tidak terhubung secara fisik.</li>
+        <li><em>Interface</em> pada switch menunjukkan status <strong>FastEthernet up</strong> dan <strong>line protocol down</strong> – menunjukkan bahwa perangkat terhubung secara fisik tetapi line protocol layer 2 mengalami kondisi down.</li>
+        <li><em>Interface</em> pada switch menunjukkan indikasi <strong>'administratively down'</strong>.</li>
+    </ul>
+    <p>Berikut beberapa solusi untuk kondisi tersebut:</p>
+    <ul>
+        <li>Untuk <em>interface</em> dengan status <strong>FastEthernet down</strong> dan <strong>line protocol down</strong>, yang pertama kali dicek adalah kabel jaringan yang terpasang pada switch. Kemungkinan kabel jaringan yang menempel pada switch tidak terpasang dengan baik. Apabila masih belum, lakukan penggantian kabel yang terpasang pada switch. Apabila masih menunjukkan status <strong>FastEthernet down</strong> dan <strong>line protocol down</strong>, lakukan pemindahan <em>port switch</em> ke yang lainnya.</li>
+        <li>Untuk <em>interface</em> pada switch dengan status <strong>FastEthernet up</strong> dan <strong>line protocol down</strong>, biasanya terjadi perbedaan kecepatan port pada switch dan port pada perangkat. Lakukanlah pemindahan port pada switch.</li>
+        <li>Untuk <em>interface</em> pada switch yang menunjukkan indikasi <strong>'administratively down'</strong>, dapat melakukan pengecekan dengan melihat apakah port tersebut terindikasi <em>shutdown</em>. Lakukanlah perintah <strong>'no shutdown'</strong> pada port tersebut.</li>
+    </ul>
+
+    <h3>b. Permasalahan Umum yang Terjadi pada VLAN</h3>
+    <p>Berikut beberapa gejala permasalahan VLAN yang sering terjadi, yaitu:</p>
+    <ul>
+        <li>Port pada switch hanya disetting mode access.</li>
+        <li>Port yang dideklarasikan pada switch dalam keadaan mati/shutdown.</li>
+        <li>Informasi VLAN belum sepenuhnya tersebar pada jaringan dari server ke client.</li>
+        <li>Antar VLAN tidak dapat saling berkomunikasi.</li>
+    </ul>
+    <p>Berikut beberapa solusi untuk gejala permasalahan VLAN:</p>
+    <ul>
+        <li>Untuk mengetahui mode port yang disetting pada switch, ketik perintah <strong>show running-configuration</strong>.</li>
+        <li>Ketikkan perintah <strong>show VLAN</strong> untuk mengetahui kondisi port yang merupakan anggota VLAN apakah <strong>shutdown</strong> atau <strong>no shutdown</strong>.</li>
+        <li>Pastikan konfigurasi antara server dan client sama agar informasi VLAN dapat sepenuhnya tersebar pada jaringan.</li>
+        <li>Pastikan gateway VLAN terdeklarasi pada switch/router apabila antar VLAN tidak dapat berkomunikasi. Untuk inter-VLAN routing harus menggunakan router (switch layer 3).</li>
+    </ul>
+
+    <h2>5. Prosedur Pengecekan Hasil Perbaikan dan Pembuatan Laporan Perbaikan VLAN</h2>
+    <p>Dokumentasi jaringan harus selalu diperbaharui apabila ada perubahan atau perbaikan pada konfigurasi ataupun topologi. Seorang administrator jaringan harus selalu melakukan hal tersebut. Untuk mengetahui perbaikan sudah berhasil atau tidak, lakukan perintah <strong>PING</strong> dari host tertentu ke host lainnya yang berada dalam jaringan yang diperbaiki.</p>
+
+    <hr>
+    <p style="font-size: 0.8rem; text-align: center; color: #2c6b84;">Dokumen troubleshooting VLAN – semua teks dan prosedur dipertahankan.</p>
+</div>
+</body>
+</html>
