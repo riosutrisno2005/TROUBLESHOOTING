@@ -117,10 +117,10 @@
     <h1>Troubleshooting VLAN</h1>
 
     <h2>1. Troubleshooting VLAN</h2>
-    <p>Troubleshooting pada VLAN merupakan cara untuk memecahkan permasalahan atau menentukan solusi pada masalah yang terjadi pada sebuah jaringan dalam hal ini mengenai VLAN. Pemecahan masalah tersebut terdiri dari beberapa tahapan yang harus dilakukan untuk mencapai hasil yang maksimal.</p>
+    <p><strong>Troubleshooting pada VLAN merupakan cara untuk memecahkan permasalahan atau menentukan solusi pada masalah yang terjadi pada sebuah jaringan dalam hal ini mengenai VLAN.</strong> Pemecahan masalah tersebut terdiri dari beberapa tahapan yang harus dilakukan untuk mencapai hasil yang maksimal.</p>
 
     <h2>2. Peralatan yang Diperlukan pada Saat Troubleshooting Jaringan</h2>
-    <p>Setelah mengetahui ada kerusakan pada jaringan, kemudian bersiap untuk memperbaikinya. Pastikan juga untuk menyiapkan beberapa peralatan untuk membantu proses perbaikan tersebut, berikut beberapa peralatan yang bisa disiapkan:</p>
+    <p>Setelah mengetahui ada kerusakan pada jaringan, kemudian bersiap untuk memperbaikinya. <strong>Pastikan juga untuk menyiapkan beberapa peralatan untuk membantu proses perbaikan tersebut</strong>, berikut beberapa peralatan yang bisa disiapkan:</p>
     <ul>
         <li><strong>LAN tester</strong> – sebuah alat yang biasa digunakan untuk mengecek kabel jaringan ketika terjadi troubleshooting jaringan. LAN tester dapat membantu beberapa kerusakan yang terjadi, seperti kesalahan ketika pemasangan kabel ketika di-crimping. Kemudian bisa juga mengecek rusak atau putusnya suatu kabel yang tidak dapat terlihat. Bisa juga mengecek jenis apakah kabel tersebut <em>cross</em> atau <em>straight</em>.</li>
         <li><strong>Tool kit</strong> – sangat membantu troubleshooting jaringan. Berfungsi membuka tempat atau wadah <em>port device</em> yang tertutup, agar dapat memasangkannya lagi.</li>
@@ -131,26 +131,26 @@
     <h2>3. Prosedur dan Teknik Pemeriksaan Permasalahan pada VLAN</h2>
     <p>Ada beberapa hal yang harus diperhatikan pada saat akan melakukan analisis terhadap permasalahan yang terjadi pada VLAN.</p>
     <ul>
-        <li>Mulailah dengan melakukan pengecekan terhadap layer fisik, seperti melakukan pengecekan terhadap kabel jaringan yang dipasang, interface <em>switch</em> atau port yang digunakan dan yakinkan kondisi interface tersebut dalam keadaan <em>up/up</em>.</li>
-        <li>Mulai cek konfigurasi yang dibuat pada port dan switch.</li>
-        <li>Pastikan MAC Address perangkat sudah ada pada tabel ARP. Ketik <strong>show arp</strong> untuk mengetahui perangkat tersebut sudah masuk dalam daftar alamat MAC.</li>
+        <li><strong>Mulailah dengan melakukan pengecekan terhadap layer fisik</strong>, seperti melakukan pengecekan terhadap kabel jaringan yang dipasang, interface <em>switch</em> atau port yang digunakan dan yakinkan kondisi interface tersebut dalam keadaan <em>up/up</em>.</li>
+        <li><strong>Mulai cek konfigurasi yang dibuat pada port dan switch.</strong></li>
+        <li><strong>Pastikan MAC Address perangkat sudah ada pada tabel ARP.</strong> Ketik <strong>show arp</strong> untuk mengetahui perangkat tersebut sudah masuk dalam daftar alamat MAC.</li>
     </ul>
 
     <h2>4. Mendeteksi Permasalahan VLAN dan Memperbaiki Permasalahan VLAN</h2>
     <p>Berikut ini beberapa permasalahan yang terjadi pada switch dan VLAN beserta solusinya.</p>
 
     <h3>a. Permasalahan Umum yang Terjadi pada Switch</h3>
-    <p>Masalah konektivitas merupakan hal yang biasa terjadi pada switch. Berikut beberapa gejala yang terjadi pada <em>switch</em>:</p>
+    <p><strong>Masalah konektivitas merupakan hal yang biasa terjadi pada switch.</strong> Berikut beberapa gejala yang terjadi pada <em>switch</em>:</p>
     <ul>
-        <li><em>Interface</em> pada switch menunjukkan status <strong>FastEthernet down</strong> dan <strong>line protocol down</strong> – menunjukkan bahwa perangkat tidak terhubung secara fisik.</li>
-        <li><em>Interface</em> pada switch menunjukkan status <strong>FastEthernet up</strong> dan <strong>line protocol down</strong> – menunjukkan bahwa perangkat terhubung secara fisik tetapi line protocol layer 2 mengalami kondisi down.</li>
+        <li><em>Interface</em> pada switch menunjukkan status <strong>FastEthernet down</strong> dan <strong>line protocol down</strong> – <strong>menunjukkan bahwa perangkat tidak terhubung secara fisik.</strong></li>
+        <li><em>Interface</em> pada switch menunjukkan status <strong>FastEthernet up</strong> dan <strong>line protocol down</strong> – <strong>menunjukkan bahwa perangkat terhubung secara fisik tetapi line protocol layer 2 mengalami kondisi down.</strong></li>
         <li><em>Interface</em> pada switch menunjukkan indikasi <strong>'administratively down'</strong>.</li>
     </ul>
     <p>Berikut beberapa solusi untuk kondisi tersebut:</p>
     <ul>
-        <li>Untuk <em>interface</em> dengan status <strong>FastEthernet down</strong> dan <strong>line protocol down</strong>, yang pertama kali dicek adalah kabel jaringan yang terpasang pada switch. Kemungkinan kabel jaringan yang menempel pada switch tidak terpasang dengan baik. Apabila masih belum, lakukan penggantian kabel yang terpasang pada switch. Apabila masih menunjukkan status <strong>FastEthernet down</strong> dan <strong>line protocol down</strong>, lakukan pemindahan <em>port switch</em> ke yang lainnya.</li>
-        <li>Untuk <em>interface</em> pada switch dengan status <strong>FastEthernet up</strong> dan <strong>line protocol down</strong>, biasanya terjadi perbedaan kecepatan port pada switch dan port pada perangkat. Lakukanlah pemindahan port pada switch.</li>
-        <li>Untuk <em>interface</em> pada switch yang menunjukkan indikasi <strong>'administratively down'</strong>, dapat melakukan pengecekan dengan melihat apakah port tersebut terindikasi <em>shutdown</em>. Lakukanlah perintah <strong>'no shutdown'</strong> pada port tersebut.</li>
+        <li><strong>Untuk <em>interface</em> dengan status FastEthernet down dan line protocol down, yang pertama kali dicek adalah kabel jaringan yang terpasang pada switch.</strong> Kemungkinan kabel jaringan yang menempel pada switch tidak terpasang dengan baik. Apabila masih belum, lakukan penggantian kabel yang terpasang pada switch. Apabila masih menunjukkan status <strong>FastEthernet down</strong> dan <strong>line protocol down</strong>, lakukan pemindahan <em>port switch</em> ke yang lainnya.</li>
+        <li><strong>Untuk <em>interface</em> pada switch dengan status FastEthernet up dan line protocol down, biasanya terjadi perbedaan kecepatan port pada switch dan port pada perangkat.</strong> Lakukanlah pemindahan port pada switch.</li>
+        <li><strong>Untuk <em>interface</em> pada switch yang menunjukkan indikasi 'administratively down', dapat melakukan pengecekan dengan melihat apakah port tersebut terindikasi <em>shutdown</em>. Lakukanlah perintah 'no shutdown' pada port tersebut.</strong></li>
     </ul>
 
     <h3>b. Permasalahan Umum yang Terjadi pada VLAN</h3>
@@ -159,18 +159,18 @@
         <li>Port pada switch hanya disetting mode access.</li>
         <li>Port yang dideklarasikan pada switch dalam keadaan mati/shutdown.</li>
         <li>Informasi VLAN belum sepenuhnya tersebar pada jaringan dari server ke client.</li>
-        <li>Antar VLAN tidak dapat saling berkomunikasi.</li>
+        <li><strong>Antar VLAN tidak dapat saling berkomunikasi.</strong></li>
     </ul>
     <p>Berikut beberapa solusi untuk gejala permasalahan VLAN:</p>
     <ul>
-        <li>Untuk mengetahui mode port yang disetting pada switch, ketik perintah <strong>show running-configuration</strong>.</li>
-        <li>Ketikkan perintah <strong>show VLAN</strong> untuk mengetahui kondisi port yang merupakan anggota VLAN apakah <strong>shutdown</strong> atau <strong>no shutdown</strong>.</li>
-        <li>Pastikan konfigurasi antara server dan client sama agar informasi VLAN dapat sepenuhnya tersebar pada jaringan.</li>
-        <li>Pastikan gateway VLAN terdeklarasi pada switch/router apabila antar VLAN tidak dapat berkomunikasi. Untuk inter-VLAN routing harus menggunakan router (switch layer 3).</li>
+        <li><strong>Untuk mengetahui mode port yang disetting pada switch, ketik perintah show running-configuration.</strong></li>
+        <li><strong>Ketikkan perintah show VLAN untuk mengetahui kondisi port yang merupakan anggota VLAN apakah shutdown atau no shutdown.</strong></li>
+        <li><strong>Pastikan konfigurasi antara server dan client sama agar informasi VLAN dapat sepenuhnya tersebar pada jaringan.</strong></li>
+        <li><strong>Pastikan gateway VLAN terdeklarasi pada switch/router apabila antar VLAN tidak dapat berkomunikasi. Untuk inter-VLAN routing harus menggunakan router (switch layer 3).</strong></li>
     </ul>
 
     <h2>5. Prosedur Pengecekan Hasil Perbaikan dan Pembuatan Laporan Perbaikan VLAN</h2>
-    <p>Dokumentasi jaringan harus selalu diperbaharui apabila ada perubahan atau perbaikan pada konfigurasi ataupun topologi. Seorang administrator jaringan harus selalu melakukan hal tersebut. Untuk mengetahui perbaikan sudah berhasil atau tidak, lakukan perintah <strong>PING</strong> dari host tertentu ke host lainnya yang berada dalam jaringan yang diperbaiki.</p>
+    <p><strong>Dokumentasi jaringan harus selalu diperbaharui apabila ada perubahan atau perbaikan pada konfigurasi ataupun topologi.</strong> Seorang administrator jaringan harus selalu melakukan hal tersebut. <strong>Untuk mengetahui perbaikan sudah berhasil atau tidak, lakukan perintah PING dari host tertentu ke host lainnya yang berada dalam jaringan yang diperbaiki.</strong></p>
 
     <hr>
     <p style="font-size: 0.8rem; text-align: center; color: #2c6b84;">2026</p>
