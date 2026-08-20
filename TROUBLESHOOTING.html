@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Troubleshooting VLAN - Jaringan Komputer</title>
+    <style>
+        /* --- RESET & BASE --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f7fa;
+            color: #000000;
+            line-height: 1.6;
+            padding: 25px 20px;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+            overflow: hidden;
+            padding: 35px 50px;
+        }
+
+        /* --- SEMUA TEKS WARNA HITAM --- */
+        body, p, li, h1, h2, h3, h4, th, td, .table-caption, figcaption, .footer-note,
+        strong, b, i, span, div, pre, code, .container * {
+            color: #000000 !important;
+        }
+
+        /* --- FONT SIZES (Rasio 1.618, acuan paragraf 12pt) --- */
+        p {
+            font-size: 12pt;
+            margin-bottom: 0.5rem;
+            text-align: justify;
+            text-indent: 2em;
+            line-height: 1.6;
+        }
+        li {
+            font-size: 12pt;
+            margin: 0.2rem 0;
+            text-align: justify;
+            line-height: 1.6;
+        }
+        h4 {
+            font-size: 16pt;
+            font-weight: 600;
+            margin: 18px 0 8px 0;
+            letter-spacing: 0.2px;
+        }
+        h3 {
+            font-size: 16pt;
+            font-weight: 600;
+            margin: 18px 0 8px 0;
+            letter-spacing: 0.2px;
+        }
+        h2 {
+            font-size: 22pt;
+            font-weight: 600;
+            margin: 24px 0 10px 0;
+            padding-bottom: 0;
+            border-bottom: none;
+            letter-spacing: 0.3px;
+        }
+        h1 {
+            font-size: 28pt;
+            font-weight: 700;
+            border-left: none;
+            padding-left: 0;
+            margin-bottom: 16px;
+            letter-spacing: 0.3px;
+            line-height: 1.2;
+        }
+
+        /* Elemen pendukung */
+        .table-caption {
+            font-size: 10pt;
+            text-align: center;
+            margin-bottom: 4px;
+            font-style: italic;
+            font-weight: 500;
+        }
+        figcaption {
+            font-size: 10pt;
+            margin-top: 6px;
+            font-style: italic;
+            font-weight: 500;
+        }
+        .note {
+            background: #f0f4fa;
+            padding: 12px 18px;
+            margin: 12px 0;
+            border-radius: 12px;
+            border: none;
+        }
+        code {
+            background: #f0f2f5;
+            padding: 1px 8px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 10.5pt;
+            color: #000000 !important;
+        }
+        pre {
+            background: #f0f2f5;
+            color: #000000 !important;
+            padding: 12px 16px;
+            border-radius: 12px;
+            overflow-x: auto;
+            margin: 10px 0 12px 0;
+            font-family: 'Courier New', 'Fira Code', monospace;
+            font-size: 10pt;
+            white-space: pre-wrap;
+            word-break: break-word;
+            border: none;
+        }
+        pre code {
+            background: none;
+            padding: 0;
+            font-size: 10pt;
+            color: #000000 !important;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .container {
+                padding: 25px 22px;
+            }
+            h1 { font-size: 24pt; }
+            h2 { font-size: 19pt; }
+            h3, h4 { font-size: 14pt; }
+            p, li { font-size: 11.5pt; }
+            pre, pre code { font-size: 9.5pt; }
+            code { font-size: 10pt; }
+            .note { padding: 10px 14px; }
+        }
+        @media (max-width: 480px) {
+            .container {
+                padding: 16px 14px;
+                border-radius: 12px;
+            }
+            h1 { font-size: 20pt; margin-bottom: 12px; }
+            h2 { font-size: 16pt; margin: 18px 0 8px 0; }
+            h3, h4 { font-size: 12pt; margin: 14px 0 6px 0; }
+            p, li { font-size: 11pt; }
+            pre, pre code { font-size: 9pt; padding: 8px 12px; }
+            code { font-size: 9.5pt; }
+            .note { padding: 8px 12px; }
+        }
+
+        /* --- STYLE LAINNYA (tanpa garis, rapat) --- */
+        ul, ol {
+            margin: 0.3rem 0 0.5rem 1.8rem;
+        }
+        hr {
+            display: none;
+        }
+        .footer-note {
+            font-size: 9pt;
+            text-align: center;
+            margin-top: 6px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1><i>Troubleshooting VLAN</i></h1>
+
+    <h2>1. <i>Troubleshooting VLAN</i></h2>
+    <p><strong><i>Troubleshooting</i> pada <i>VLAN</i> merupakan cara untuk memecahkan permasalahan atau menentukan solusi pada masalah yang terjadi pada sebuah <i>jaringan</i> dalam hal ini mengenai <i>VLAN</i>.</strong> Pemecahan masalah tersebut terdiri dari beberapa tahapan yang harus dilakukan untuk mencapai hasil yang maksimal.</p>
+
+    <h2>2. Peralatan yang dibutuhkan pada Saat <i>Troubleshooting</i> Jaringan</h2>
+    <p>Setelah mengetahui terdapat kerusakan pada jaringan, kemudian bersiap untuk memperbaikinya. <strong>Pastikan juga untuk menyiapkan beberapa peralatan untuk membantu proses perbaikan tersebut</strong>, berikut beberapa peralatan yang dapat disiapkan:</p>
+    <ol>
+        <li><strong><i>LAN tester</i></strong>, sebuah alat yang dapat digunakan untuk mengecek kabel jaringan ketika terjadi <i>troubleshooting</i> jaringan. <i>LAN tester</i> dapat membantu beberapa kerusakan yang terjadi, seperti kesalahan ketika pemasangan kabel ketika di-<i>crimping</i>. Kemudian dapat juga mengecek rusak atau putusnya suatu <i>kabel</i> yang tidak dapat terlihat. Dapat juga mengecek jenis <i>kabel</i> tersebut <i>cross</i> atau <i>straight</i>.</li>
+        <li><strong><i>Tool kit</i></strong>, sangat membantu <i>troubleshooting</i> jaringan. Berfungsi membuka tempat atau wadah <i>port device</i> yang tertutup, agar dapat memasangkannya lagi.</li>
+        <li><strong><i>Tang Crimping</i></strong>, alat yang juga dapat membantu pengecekan ketika <i>troubleshooting</i> jaringan. Alat ini dapat membuka kabel yang digunakan untuk transfer data. <i>Tang crimping</i> ini dapat digunakan untuk memotong kulit kabel dan juga menyatukan kabel.</li>
+        <li><strong><i>Konektor RJ-45</i></strong>, dengan bantuan <i>tang crimping</i> alat ini dapat membantu menghubungkan kabel dan juga <i>media transmisi</i> dengan <i>port</i> perangkat jaringan.</li>
+    </ol>
+
+    <h2>3. Prosedur dan Teknik Pemeriksaan Permasalahan pada <i>VLAN</i></h2>
+    <p>Terdapat beberapa hal yang harus diperhatikan pada saat akan melakukan analisis terhadap permasalahan yang terjadi pada <i>VLAN</i> yaitu.</p>
+    <ol>
+        <li><strong>Mulailah dengan melakukan pengecekan terhadap <i>layer fisik</i></strong>, seperti melakukan pengecekan terhadap kabel jaringan yang dipasang, <i>interface switch</i> atau <i>port</i> yang digunakan dan yakinkan kondisi <i>interface</i> tersebut dalam keadaan <i>up/up</i>.</li>
+        <li><strong>Mulai cek konfigurasi yang dibuat pada <i>port</i> dan <i>switch</i>.</strong></li>
+        <li><strong>Pastikan <i>MAC Address</i> perangkat sudah ada pada tabel <i>ARP</i>.</strong> Ketik <strong><i>show arp</i></strong> untuk mengetahui perangkat tersebut sudah masuk dalam daftar alamat <i>MAC</i>.</li>
+    </ol>
+
+    <h2>4. Mendeteksi Permasalahan <i>VLAN</i> dan Memperbaiki Permasalahan <i>VLAN</i></h2>
+    <p>Berikut ini beberapa permasalahan yang terjadi pada <i>switch</i> dan <i>VLAN</i> beserta solusinya.</p>
+
+    <h3>a. Permasalahan Umum yang Terjadi pada <i>Switch</i></h3>
+    <p><strong>Masalah konektivitas merupakan hal yang dapat terjadi pada <i>switch</i>.</strong> Berikut beberapa gejala yang terjadi pada <i>switch</i>:</p>
+    <ol>
+        <li><i>Interface</i> pada <i>switch</i> menunjukkan status <strong><i>FastEthernet down</i></strong> dan <strong><i>line protocol down</i></strong> – <strong>menunjukkan bahwa perangkat tidak terhubung secara fisik.</strong></li>
+        <li><i>Interface</i> pada <i>switch</i> menunjukkan status <strong><i>FastEthernet up</i></strong> dan <strong><i>line protocol down</i></strong> – <strong>menunjukkan bahwa perangkat terhubung secara fisik tetapi <i>line protocol layer 2</i> mengalami kondisi <i>down</i>.</strong></li>
+        <li><i>Interface</i> pada <i>switch</i> menunjukkan indikasi <strong>'<i>administratively down</i>'</strong>.</li>
+    </ol>
+    <p>Berikut beberapa solusi untuk mengatasi permasalahan tersebut:</p>
+    <ol>
+        <li><strong><i>interface</i> dengan status <i>fastEthernet down</i> dan <i>line protocol down</i>, yang pertama kali dicek adalah kabel jaringan yang terpasang pada <i>switch</i>.</strong> Kemungkinan kabel jaringan yang menempel pada <i>switch</i> tidak terpasang dengan baik. Apabila masih belum, lakukan penggantian kabel yang terpasang pada <i>switch</i>. Apabila masih menunjukkan status <strong><i>fastEthernet down</i></strong> dan <strong><i>line protocol down</i></strong>, lakukan pemindahan <i>port switch</i> ke yang lainnya.</li>
+        <li><strong><i>interface</i> pada <i>switch</i> dengan status <i>fastEthernet up</i> dan <i>line protocol down</i>, biasanya terjadi perbedaan kecepatan <i>port</i> pada <i>switch</i> dan <i>port</i> pada perangkat.</strong> Lakukanlah pemindahan <i>port</i> pada <i>switch</i>.</li>
+        <li><strong><i>interface</i> pada <i>switch</i> yang menunjukkan indikasi '<i>administratively down</i>', dapat melakukan pengecekan dengan melihat <i>port</i> tersebut terindikasi <i>shutdown</i>. Lakukanlah perintah '<i>no shutdown</i>' pada <i>port</i> tersebut.</strong></li>
+    </ol>
+
+    <h3>b. Permasalahan Umum yang Terjadi pada <i>VLAN</i></h3>
+    <p>Berikut beberapa gejala permasalahan <i>VLAN</i> yang sering terjadi, yaitu:</p>
+    <ol>
+        <li><i>Port</i> pada <i>switch</i> hanya diatur pada <i>mode access</i>.</li>
+        <li><i>Port</i> yang dideklarasikan pada <i>switch</i> dalam keadaan mati/<i>shutdown</i>.</li>
+        <li>Informasi <i>VLAN</i> belum sepenuhnya tersebar pada jaringan dari <i>server</i> ke <i>client</i>.</li>
+        <li>Antar <i>VLAN</i> tidak dapat saling berkomunikasi.</li>
+    </ol>
+    <p>Berikut beberapa solusi untuk gejala permasalahan <i>VLAN</i>, yaitu:</p>
+    <ol>
+        <li>Mengetahui <i>mode port</i> yang disetting pada <i>switch</i>, ketik perintah <i>show running-configuration</i>.</li>
+        <li>Ketikkan perintah <i>show VLAN</i> untuk mengetahui kondisi <i>port</i> yang merupakan anggota <i>VLAN</i> <i>shutdown</i> atau <i>no shutdown</i>.</li>
+        <li>Pastikan konfigurasi antara <i>server</i> dan <i>client</i> sama agar informasi <i>VLAN</i> dapat sepenuhnya tersebar pada jaringan.</li>
+        <li>Pastikan <i>gateway VLAN</i> terdeklarasi pada <i>switch/router</i> apabila antar <i>VLAN</i> tidak dapat berkomunikasi. <i>inter-VLAN routing</i> harus menggunakan <i>router</i> (<i>switch layer 3</i>).</li>
+    </ol>
+
+    <h2>5. Prosedur Pengecekan Hasil Perbaikan dan Pembuatan Laporan Perbaikan <i>VLAN</i></h2>
+    <p><strong>Dokumentasi jaringan harus selalu diperbaharui apabila terdapat perubahan atau perbaikan pada konfigurasi ataupun <i>topologi</i>.</strong> Seorang <i>administrator</i> jaringan harus selalu melakukan hal tersebut. <strong>Untuk mengetahui perbaikan sudah berhasil atau tidak, lakukan perintah <i>PING</i> dari <i>host</i> tertentu ke <i>host</i> lainnya yang berada dalam jaringan yang diperbaiki.</strong></p>
+
+    <p class="footer-note"></p>
+</div>
+</body>
+</html>
